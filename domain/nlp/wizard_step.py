@@ -12,8 +12,20 @@ class WizardStep(PipelineStep):
         lowered = text.lower()
 
         if conversation_state.wizard_running():
-            handled = handler.handle(text)
-            return StepResult(handled)
+            step = conversation_state.current_step()
+
+            if not step.get("_shown"):
+                executor.feedback(
+                SSEEvent.action(
+                    context.get("wizard_title", "Instalação"),
+                    step["message"]
+                )
+            )
+            step["_shown"] = True
+            return StepResult(True)
+
+        handled = handler.handle(text)
+        return StepResult(handled)
 
         for wizard in WIZARD_REGISTRY:
             for trigger in wizard["trigger"]:
