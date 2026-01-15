@@ -108,5 +108,35 @@
     "fonte": "manual",
     "autor": "assistente",
     "status": "pendente"
+  },
+  {
+    "id": "6578d75f-f61e-407f-9702-da3c1621fc75",
+    "data": "2026-01-15T12:41:39.404599",
+    "instrucao": "instalção gfc700",
+    "acao": null,
+    "resposta": null,
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "pendente"
+  },
+  {
+    "id": "fd590bfe-5a3e-4145-b452-624658aeb343",
+    "data": "2026-01-15T12:42:01.258858",
+    "instrucao": "instalar gfc700",
+    "acao": null,
+    "resposta": null,
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "pendente"
+  },
+  {
+    "id": "0ed6dae1-db28-47b0-b1a6-f940e57a3d82",
+    "data": "2026-01-15T12:48:10.936467",
+    "instrucao": "iniciar g1000",
+    "acao": null,
+    "resposta": null,
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "pendente"
   }
 ]
