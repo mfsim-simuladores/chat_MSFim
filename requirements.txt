@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+opencv-python
+numpy
+pyautogui
+pillow
+pywin32
+pyserial

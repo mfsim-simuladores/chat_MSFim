@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "MFSim_TimedProcessing2",
+    "Type": "plugin",
+    "Description": "Plugin de teste.",
+    "FilePath": "D:\\TimedProcessing2.zip"
+  },
+  {
+    "Name": "MFSim GFC700",
+    "Type": "instalacao",
+    "Description": "Instalar GFC700",
+    "FilePath": "D:\\MFSim GFC700 XPLANE.zip"
+  }
+]

@@ -1,0 +1,84 @@
+{
+    "Category": "Instalação",
+    "Description": "Guias interativos de instalação dos módulos MFSim.",
+    "Items": [
+      {
+        "Question": "instalacao gfc700",
+        "Action": "instalar_gfc700",
+        "Mode": "wizard",
+        "Steps": [
+          {
+            "Text": "Olá Comandante! Vamos começar a instalaçao do GFC700, está preparado?",
+            "Action": "hello"
+          },
+          {
+            "Text": "1°: Copiar o plugin correspondente para 'Resources/plugins' do X-Plane. Deseja que eu faça isso?",
+            "Action": "copiar_plugins_gfc700"
+          },
+          {
+            "Text": "2°: Executar o conector MFSim GFC700 conforme o simulador instalado. Deseja que eu faça isso?",
+            "Action": "executar_conector_gfc700_csharp"
+          },
+          {
+            "Text": "3°: No conector, selecione a porta COM do GFC700 e clique em 'Conectar'. Quando conectar digite 'ok'.",
+            "Action": "hello"
+          },
+          {
+            "Text": "Deseja colocar o aplicativo GFC700 na área de trabalho para acesso rápido?",
+            "Action": "fixar_gfc700_taskbar_csharp"
+          },
+          {
+            "Text": "Finalizado Comandante, pronto para voar!",
+            "Action": "fim"
+          }
+        ]
+      },
+      {
+        "Question": "instalacao manche xplane12",
+        "Action": "instalar_manche_xplane12",
+        "Mode": "wizard",
+        "Steps": [
+          {
+            "Text": "Olá Comandante! Vamos iniciar a configuração automática do seu Manche MFSim no X-Plane 12. Preparado?",
+            "Action": "hello"
+          },
+          {
+            "Text": "1°: Vou abrir o X-Plane 12 automaticamente. Caso ele já esteja aberto, apenas aguarde.",
+            "Action": "abrir_xplane"
+          },
+          {
+            "Text": "2°: Verificando se o Manche MFSim está conectado via USB...",
+            "Action": "detectar_manche"
+          },
+          {
+            "Text": "3°: Abrindo a tela de configurações de Joystick automaticamente...",
+            "Action": "abrir_joystick_xplane"
+          },
+          {
+            "Text": "4°: Vou clicar em 'Calibrar Agora' automaticamente usando visão computacional.",
+            "Action": "clicar_calibrar"
+          },
+          {
+            "Text": "5°: Por favor mova todos os eixos do manche (aileron e profundor) até o final. Avise quando terminar digitando 'ok'.",
+            "Action": "guiar_calibracao"
+          },
+          {
+            "Text": "6°: Centralize fisicamente o manche e mantenha-o firme. Vou prosseguir automaticamente.",
+            "Action": "centralizar_manche"
+          },
+          {
+            "Text": "7°: Vamos avançar. Vou clicar em 'Seguinte' automaticamente.",
+            "Action": "clicar_seguinte"
+          },
+          {
+            "Text": "8°: Finalizando calibração, aguarde...",
+            "Action": "finalizar_calibracao"
+          },
+          {
+            "Text": "Configuração concluída, Comandante! Seu Manche MFSim está agora calibrado e pronto para voar!",
+            "Action": "fim"
+          }
+        ]
+      }
+    ]
+}
