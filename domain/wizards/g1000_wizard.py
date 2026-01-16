@@ -9,6 +9,7 @@ G1000_WIZARD = {
     "mode": "wizard",
     "steps": [
         {
+            #Verificar se a tela ja abriu/executou
             "id": "start",
             "message": (
                 "Olá, Comandante! Vamos iniciar a instalação completa do G1000 MFSim. "
@@ -34,7 +35,7 @@ G1000_WIZARD = {
                 "Deseja que eu faça isso automaticamente?"
             ),
             "type": "confirmation",
-           # "action": "copiar_arquivos_joystick_g1000"
+            "action": "copiar_arquivos_joystick_g1000"
         },
         {
             "id": "open_xplane",
@@ -43,7 +44,7 @@ G1000_WIZARD = {
                 "Deseja que eu inicie o simulador automaticamente agora?"
             ),
             "type": "confirmation",
-          #  "action": "abrir_xplane"
+            "action": "start_sim"
         },
         {
             "id": "run_connector",
@@ -52,14 +53,14 @@ G1000_WIZARD = {
                 "Deseja que eu abra o conector automaticamente?"
             ),
             "type": "confirmation",
-           # "action": "executar_conector_g1000"
+            "action": "executar_conector_g1000"
         },
         {
             "id": "adjust_screens",
             "message": (
                 "5° Passo: Ajustar as telas do G1000 no X-Plane. "
                 "Vou orientar o ajuste de resolução e posicionamento. "
-               # "Quando estiver pronto para continuar, digite OK."
+                "Quando estiver pronto para continuar, digite OK."
             ),
             "type": "wait_ok"
         },
@@ -69,7 +70,7 @@ G1000_WIZARD = {
                 "5° Passo: Inserir os instrumentos do G1000 na aeronave "
                 "e ajustar corretamente o posicionamento na tela. "
                 "Realize os ajustes conforme orientação. "
-              #  "Quando finalizar, digite OK."
+                "Quando finalizar, digite OK."
             ),
             "type": "wait_ok"
         },
@@ -84,7 +85,7 @@ G1000_WIZARD = {
                 "Deseja que eu faça isso automaticamente?"
             ),
             "type": "confirmation",
-          #  "action": "salvar_configuracoes_g1000"
+            "action": "salvar_configuracoes_g1000"
         },
         {
             "id": "pin_apps",
@@ -94,7 +95,7 @@ G1000_WIZARD = {
                 "Deseja que eu faça isso agora?"
             ),
             "type": "confirmation",
-         #   "action": "fixar_g1000_area_trabalho"
+            "action": "fixar_g1000_area_trabalho"
         },
         {
             "id": "finish",

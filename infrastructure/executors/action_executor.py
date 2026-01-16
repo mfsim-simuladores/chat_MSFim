@@ -341,7 +341,7 @@ class ActionExecutor:
 
 # instalação GFC700
     def copiar_plugins_gfc700(self):
-        raiz = r"D:\GFC700\MFSim GFC700 XPLANE"
+        raiz = r"D:\arquivosChat\GFC700\MFSim GFC700 XPLANE"
 
         if not os.path.exists(raiz):
             self.feedback(
@@ -396,7 +396,7 @@ class ActionExecutor:
             )
 
     def executar_conector_gfc700_csharp(self):
-        exe = r"D:\GFC700\MFSim GFC700 XPLANE\MFSim Driver Connection.exe"
+        exe = r"D:\arquivosChat\GFC700\MFSim GFC700 XPLANE\MFSim Driver Connection.exe"
 
         if not os.path.exists(exe):
             self.feedback(
@@ -434,7 +434,7 @@ class ActionExecutor:
             )
 
     def fixar_gfc700_taskbar_csharp(self):
-        exe = r"D:\GFC700\MFSim GFC700 XPLANE\MFSIM GFC700 XPLANE.exe"
+        exe = r"D:\arquivosChat\GFC700\MFSim GFC700 XPLANE\MFSim Driver Connection.exe"
 
         if not os.path.exists(exe):
             self.feedback(
@@ -480,15 +480,71 @@ class ActionExecutor:
                 )
             )
 
+
 # instalação G1000
     def copiar_plugins_g1000(self):
-        origem = r"D:\arquivosChat\G1000\XPLANE\MFsim\Resources"
+        raiz = r"D:\arquivosChat\G1000\XPLANE\MFsim\Resources"
+
+        if not os.path.exists(raiz):
+            self.feedback(
+                SSEEvent.error(
+                    "G1000",
+                    "❌ Pasta do G1000 não encontrada."
+                )
+            )
+            return
+
+        exe = self.varredura_xplane()
+        if not exe:
+            return
+
+        versao = "11" if "11" in exe else "12"
+        origem = os.path.join(raiz, f"plugins")
+
+        destino = os.path.join(
+            os.path.dirname(exe),
+            "Resources",
+            "plugins",
+            os.path.basename(origem)
+        )
+
+        self.feedback(
+            SSEEvent.action(
+                "G1000",
+                f"📂 Copiando plugins para:\n{destino}",
+                "copiar_plugins_g1000"
+            )
+        )
+
+        try:
+            if os.path.exists(destino):
+                shutil.rmtree(destino)
+
+            shutil.copytree(origem, destino)
+
+            self.feedback(
+                SSEEvent.finished(
+                    "copiar_plugins_g1000",
+                    "✅ Plugins G1000 instalados com sucesso."
+                )
+            )
+
+        except Exception as e:
+            self.feedback(
+                SSEEvent.error(
+                    "Erro ao copiar plugins",
+                    str(e)
+                )
+            )
+
+    def copiar_arquivos_joystick_g1000(self):
+        origem = r"D:\arquivosChat\Joysticks"
 
         if not os.path.exists(origem):
             self.feedback(
                 SSEEvent.error(
                     "G1000",
-                    "❌ Pasta Resources do G1000 não encontrada."
+                    "❌ Pasta de Joysticks não encontrada."
                 )
             )
             return
@@ -499,13 +555,20 @@ class ActionExecutor:
             return
 
         xplane_root = os.path.dirname(exe)
-        destino = os.path.join(xplane_root, "Resources")
+        destino = os.path.join(
+            xplane_root,
+            "Resources",
+            "joystick configs"
+        )
+
+        # Garante que a pasta de destino exista
+        os.makedirs(destino, exist_ok=True)
 
         self.feedback(
             SSEEvent.action(
                 "G1000",
-                f"📂 Copiando Resources para:\n{destino}",
-                "copiar_resources_g1000"
+                f"🎮 Copiando arquivos de joystick para:\n{destino}",
+                "copiar_joystick_g1000"
             )
         )
 
@@ -515,6 +578,7 @@ class ActionExecutor:
                 dst = os.path.join(destino, item)
 
                 if os.path.isdir(src):
+                    # Se existir, sobrescreve
                     if os.path.exists(dst):
                         shutil.rmtree(dst)
                     shutil.copytree(src, dst)
@@ -523,15 +587,158 @@ class ActionExecutor:
 
             self.feedback(
                 SSEEvent.finished(
-                    "copiar_resources_g1000",
-                    "✅ Pasta Resources copiada com sucesso para o X-Plane."
+                    "copiar_joystick_g1000",
+                    "✅ Arquivos de joystick copiados com sucesso."
                 )
             )
 
         except Exception as e:
             self.feedback(
                 SSEEvent.error(
-                    "Erro ao copiar Resources",
+                    "Erro ao copiar joystick configs",
+                    str(e)
+                )
+            )
+
+    def executar_conector_g1000(self):
+        exe = r"D:\softwaresMfsim\ConnectorMfsim\connector.exe"
+
+        if not os.path.exists(exe):
+            self.feedback(
+                SSEEvent.error(
+                    "G1000",
+                    "❌ Driver Connection não encontrado."
+                )
+            )
+            return
+
+        self.feedback(
+            SSEEvent.action(
+                "G1000",
+                "🚀 Iniciando Driver Connection...",
+                "executar_conector_g1000"
+            )
+        )
+
+        try:
+            subprocess.Popen([exe], shell=True)
+
+            self.feedback(
+                SSEEvent.finished(
+                    "executar_conector_g1000",
+                    "Driver Connection iniciado com sucesso."
+                )
+            )
+
+        except Exception as e:
+            self.feedback(
+                SSEEvent.error(
+                    "Erro ao iniciar Driver",
+                    str(e)
+                )
+            )
+
+    def fixar_g1000_area_trabalho(self):
+        exe = r"D:\softwaresMfsim\ConnectorMfsim\connector.exe"
+
+        if not os.path.exists(exe):
+            self.feedback(
+                SSEEvent.error(
+                    "G1000",
+                    "❌ Executável do G1000 não encontrado."
+                )
+            )
+            return
+
+        self.feedback(
+            SSEEvent.action(
+                "G1000",
+                "📎 Criando atalho na área de trabalho...",
+                "fixar_g1000_area_trabalho"
+            )
+        )
+
+        try:
+            desktop = os.path.join(os.environ["USERPROFILE"], "Desktop")
+            shortcut = os.path.join(desktop, "MFSim G1000.lnk")
+
+            shell = win32.Dispatch("WScript.Shell")
+            link = shell.CreateShortcut(shortcut)
+            link.TargetPath = exe
+            link.WorkingDirectory = os.path.dirname(exe)
+            link.Description = "MFSim G1000"
+            link.IconLocation = exe
+            link.Save()
+
+            self.feedback(
+                SSEEvent.finished(
+                    "fixar_g1000_area_trabalho",
+                    "Atalho do G1000 criado com sucesso na área de trabalho."
+                )
+            )
+
+        except Exception as e:
+            self.feedback(
+                SSEEvent.error(
+                    "Erro ao criar atalho",
+                    str(e)
+                )
+            )
+
+    def salvar_configuracoes_g1000(self):
+        import os
+        import shutil
+
+        exe = self.varredura_xplane()
+        if not exe:
+            return
+
+        origem = os.path.join(
+            os.path.dirname(exe),
+            "Output",
+            "preferences"
+        )
+
+        if not os.path.exists(origem):
+            self.feedback(
+                SSEEvent.error(
+                    "G1000",
+                    "❌ Pasta Output/preferences não encontrada."
+                )
+            )
+            return
+
+        destino = os.path.join(
+            os.path.dirname(exe),
+            "Output",
+            "RESET"
+        )
+
+        self.feedback(
+            SSEEvent.action(
+                "G1000",
+                f"💾 Salvando configurações do X-Plane:\n{destino}",
+                "salvar_configuracoes_g1000"
+            )
+        )
+
+        try:
+            if os.path.exists(destino):
+                shutil.rmtree(destino)
+
+            shutil.copytree(origem, destino)
+
+            self.feedback(
+                SSEEvent.finished(
+                    "salvar_configuracoes_g1000",
+                    "✅ Configurações salvas com sucesso em Output/RESET."
+                )
+            )
+
+        except Exception as e:
+            self.feedback(
+                SSEEvent.error(
+                    "Erro ao salvar configurações",
                     str(e)
                 )
             )
