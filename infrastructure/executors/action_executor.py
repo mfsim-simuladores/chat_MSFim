@@ -21,7 +21,6 @@ class ActionExecutor:
     def execute(self, action_name: str):
         print(f"🔥 Executor recebeu ação: {action_name}")
 
-
         action = ACTIONS_REGISTRY.get(action_name)
 
         if not action:
@@ -44,7 +43,6 @@ class ActionExecutor:
                 )
             )
 
-
     def log_info(self, title, message, action=None):
         self.feedback(SSEEvent.action(title, message, action))
 
@@ -59,6 +57,11 @@ class ActionExecutor:
 
     def log_progress(self, title, message, progress, action=None):
         self.feedback(SSEEvent.progress(title, message, progress, action))
+
+    def responder_texto(self):
+        if isinstance(payload, dict):
+            return payload.get("texto", "")
+        return payload
 
     def varredura_xplane(self):
         self.log_info("Varredura", "Procurando X-Plane nos discos...", "varredura_xplane")
@@ -479,7 +482,6 @@ class ActionExecutor:
                     str(e)
                 )
             )
-
 
 # instalação G1000
     def copiar_plugins_g1000(self):

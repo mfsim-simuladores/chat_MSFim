@@ -11,6 +11,7 @@ from app.api.actions_router import router as actions_router
 from app.api.knowledge_router import router as knowledge_router
 from app.api.learning_router import router as learning_router
 from app.api.sse_handler import router as sse_router
+from app.api.adm_router import router as adm_router
 
 def configure_services(app: FastAPI):
 
@@ -47,6 +48,7 @@ def create_app() -> FastAPI:
     app.include_router(knowledge_router)
     app.include_router(learning_router)
     app.include_router(sse_router)
+    app.include_router(adm_router)
 
     return app
 

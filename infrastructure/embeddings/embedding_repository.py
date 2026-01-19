@@ -1,5 +1,3 @@
-# infrastructure/embeddings/embedding_repository.py
-
 import json
 import os
 import numpy as np

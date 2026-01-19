@@ -16,6 +16,6 @@ class KnowledgeRepository:
         except Exception as e:
             raise RuntimeError(f"Erro ao carregar knowledge: {e}")
 
-    def save(self, data: List[Dict]):
+    def save_all(self, data: List[Dict]):
         with open(self.path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)

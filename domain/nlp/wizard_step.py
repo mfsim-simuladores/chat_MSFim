@@ -12,16 +12,10 @@ class WizardStep(PipelineStep):
         handler = WizardHandler(executor)
         lowered = text.lower()
 
-        # ======================================
-        # SE UM WIZARD JÁ ESTÁ EM EXECUÇÃO
-        # ======================================
         if conversation_state.wizard_running():
             handled = handler.handle(text)
             return StepResult(handled)
 
-        # ======================================
-        # INICIAR UM NOVO WIZARD
-        # ======================================
         for wizard in WIZARD_REGISTRY:
             for trigger in wizard["trigger"]:
                 if trigger in lowered:
@@ -38,7 +32,4 @@ class WizardStep(PipelineStep):
 
                     return StepResult(True)
 
-        # ======================================
-        # NÃO FOI WIZARD
-        # ======================================
         return StepResult(False)

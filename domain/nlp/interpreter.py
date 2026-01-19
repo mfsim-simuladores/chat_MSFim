@@ -9,7 +9,6 @@ from domain.nlp.pipeline import InterpreterPipeline
 from domain.nlp.semantic_step import SemanticStep
 from domain.nlp.gemini_step import GeminiStep
 from domain.nlp.wizard_step import WizardStep
-#from domain.nlp.wizard_detector import WizardDetector
 
 load_dotenv()
 

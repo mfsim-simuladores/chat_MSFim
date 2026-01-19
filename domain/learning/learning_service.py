@@ -1,4 +1,5 @@
 from datetime import datetime
+from domain.knowledge.knowledge_manager import KnowledgeManager
 import uuid
 
 class LearningService:
@@ -39,11 +40,33 @@ class LearningService:
         todas = self.repository.listar_todas()
         return [i for i in todas if i.get("status") == "pendente"]
 
-    def aprovar_instrucao(self, instrucao_id):
+    def aprovar_instrucao(self, instrucao_id, knowledge_manager, action_override=None):
         itens = self.repository.listar_todas()
+
+        aprovado = None
 
         for item in itens:
             if item.get("id") == instrucao_id:
                 item["status"] = "aprovado"
+                if action_override:
+                    item["acao"] = action_override
+                aprovado = item
+                break
 
-        self.repository.substituir_tudo(itens)
+        if not aprovado:
+            return False
+
+        if not aprovado.get("acao"):
+            raise ValueError("Não é possivel aprovar sem ação definida")
+
+        knowledge_manager.add_item(
+            question=aprovado["instrucao"],
+            action=aprovado.get("acao")
+        )
+
+        self.repository.atualizar(
+            instrucao_id,
+            {"status": "aprovado", "acao": aprovado["acao"]}
+        )
+
+        return True

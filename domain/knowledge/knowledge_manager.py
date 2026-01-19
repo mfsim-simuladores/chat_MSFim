@@ -1,4 +1,5 @@
 from domain.knowledge.knowledge_item import KnowledgeItem
+from infrastructure.persistence.knowledge_repository import KnowledgeRepository
 
 class KnowledgeManager:
     def __init__(self, repository):
@@ -34,3 +35,25 @@ class KnowledgeManager:
             if item.question.strip().lower() == q:
                 return item
         return None
+
+    def add_item(self, question: str, action: str, reponse: str =None):
+        data = self.repo.load_all()
+
+        categoria = next((c for c in data if c["Category"] == "Aprendizado"), None)
+
+        if not categoria:
+            categoria = {
+                "Category": "Aprendizado",
+                "Description": "Conhevimento aprendido incrementalmente",
+                "Items": []
+            }
+            data.append(categoria)
+
+        categoria["Items"].append({
+            "Question": question.strip(),
+            "Action": action
+        })
+
+        self.repo.save(data)
+
+        self._items = None

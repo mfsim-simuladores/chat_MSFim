@@ -14,6 +14,7 @@ from .copiar_arquivos_joystick_g1000_action import CopiarArquivosG1000Action
 from .executar_conector_g1000_action import ExecutarConectorG1000Action
 from .salvar_configuracoes_g1000_action import salvarConfiguracoes
 from .fixar_g1000_area_trabalho_action import fixar_g1000_area_trabalho
+from .responder_texto_action import RespondeTextoAction
 
 ACTIONS_REGISTRY = {
     VerificarInstalacaoXPlaneAction.action_name: VerificarInstalacaoXPlaneAction(),
@@ -33,6 +34,7 @@ ACTIONS_REGISTRY = {
     FixarGFC700TaskbarAction.action_name: FixarGFC700TaskbarAction(),
     fixar_g1000_area_trabalho.action_name: fixar_g1000_area_trabalho(),
     salvarConfiguracoes.action_name: salvarConfiguracoes(),
+    RespondeTextoAction.action_name: RespondeTextoAction(),
 }
 
 print(ACTIONS_REGISTRY.keys())
