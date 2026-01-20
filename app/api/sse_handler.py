@@ -4,6 +4,8 @@ from fastapi import APIRouter, Request
 from sse_starlette.sse import EventSourceResponse
 from domain.logging.sse_events import SSEEvent
 from domain.state.conversation_state import conversation_state
+from domain.nlp.pipeline import PipelineStep
+from domain.actions.registry import ACTIONS_REGISTRY
 
 router = APIRouter(prefix="/sse")
 END = "__END__"
@@ -22,44 +24,52 @@ async def event_generator(text, pipeline, executor):
         "executor": executor
     }
 
-    queue.put_nowait(SSEEvent.action("Interpretando", " "))
+    queue.put_nowait(SSEEvent.action("Interpretando", ""))
 
-    action_name = pipeline.interpret(text, context)
+    result = pipeline.interpret(text, context)
 
-    if action_name is None:
 
+    if result is None:
         if "llm_response" in context:
             queue.put_nowait(
-                SSEEvent.message(
-                    title="Assistente",
-                    message=context["llm_response"]
+                SSEEvent.log(
+                    context["llm_response"],
+                    title="Assistente"
                 )
             )
         else:
             queue.put_nowait(
-                SSEEvent.error("Nenhuma ação", "Nada encontrado.")
+                SSEEvent.error("Nenhuma ação", "Nada encontrado")
             )
 
         queue.put_nowait(END)
         return
 
-    queue.put_nowait(
-        SSEEvent.action("Ação detectada", " ")
-    )
+    if isinstance(result, dict):
+        action_name = result.get("action")
+        payload = result.get("payload")
+    else:
+        action_name = result
+        payload = None
+
 
     async def run():
         try:
-            if action_name and not conversation_state.wizard_running():
-                executor.execute(action_name)
+            if not conversation_state.wizard_running():
+                executor.execute(action_name, payload)
 
                 if not conversation_state.awaiting_confirmation():
                     queue.put_nowait(
-                        SSEEvent.finished("Concluído", "Ação finalizada.")
+                        SSEEvent.finished(
+                            "Concluído",
+                            "Ação finalizada."
+                        )
                     )
 
-
         except Exception as e:
-            queue.put_nowait(SSEEvent.error("Erro", str(e)))
+            queue.put_nowait(
+                SSEEvent.error("Erro", str(e))
+            )
         finally:
             queue.put_nowait(END)
 
@@ -70,6 +80,8 @@ async def event_generator(text, pipeline, executor):
         if ev == END:
             break
         yield f"data: {json.dumps(ev, ensure_ascii=False)}\n\n"
+
+
 
 
 @router.get("/run")

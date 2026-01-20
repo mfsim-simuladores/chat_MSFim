@@ -24,10 +24,36 @@ class ChatProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _addBot(String text, {String type = "log"}) {
-    _messages.add(Message.system(text));
+  void _addBot(String text, {String type = "log", String? title}) {
+    switch (type) {
+
+      case "action":
+        _messages.add(
+          Message.actionBlock(
+            title: title ?? "Ação",
+            items: [text],
+          ),
+        );
+        break;
+
+      case "finished":
+        _messages.add(Message.system(text));
+        break;
+
+      case "error":
+        _messages.add(Message.system("❌ $text"));
+        break;
+
+      case "log":
+      default:
+        // resposta textual do assistente
+        _messages.add(Message.system(text));
+        break;
+    }
+
     notifyListeners();
   }
+
 
   Future<void> sendMessage(String text) async {
     if (text.trim().isEmpty) return;
@@ -62,9 +88,13 @@ class ChatProvider extends ChangeNotifier {
         final event = jsonDecode(raw);
 
         final message = event["message"];
-        if (message != null && message.toString().isNotEmpty) {
-          _addBot(message, type: event["type"] ?? "log");
-        }
+          if (message != null && message.toString().isNotEmpty) {
+            _addBot(
+              message,
+              type: event["type"] ?? "log",
+              title: event["title"],
+            );
+          }
       }
     } catch (e) {
       _addBot("Erro SSE: $e", type: "error");

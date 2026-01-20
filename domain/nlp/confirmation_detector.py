@@ -10,6 +10,10 @@ class ConfirmationDetector(PipelineStep):
         "pode continuar", "vamos", "manda ver", "faz isso"
     }
 
+    CANCEL_WORDS = {
+        "não", "nao", "n", "cancela", "cancelar", "pare", "para"
+    }
+
     def run(self, text: str, context: dict) -> StepResult:
 
         if not conversation_state.awaiting_confirmation():
@@ -18,8 +22,18 @@ class ConfirmationDetector(PipelineStep):
         txt = text.lower().strip()
 
         if any(w in txt for w in self.CONFIRM_WORDS):
-            action = conversation_state.current_step().get("action")
-            conversation_state.advance_step()
+            action = conversation_state.consume_confirmation()
             return StepResult(True, action)
+
+        if any(w in txt for w in self.CANCEL_WORDS):
+            conversation_state.reset()
+            return StepResult(
+                True,
+                {
+                    "action": None,
+                    "message": "Operação cancelada."
+                },
+                stop=True
+            )
 
         return StepResult(False)

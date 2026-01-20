@@ -17,7 +17,7 @@ class XPlaneTCPClient:
                 raw = s.recv(2048).decode("ascii", errors="ignore").strip()
 
         except Exception as e:
-            raise XPlaneConnectionError(f"Erro na conexão TCP: {e}")
+            raise XplaneConnectionError(f"Erro na conexão TCP: {e}")
 
         if not raw:
             raise XPlaneEmptyResponse("Plugin retornou resposta vazia.")
@@ -37,4 +37,4 @@ class XPlaneTCPClient:
                     s.sendall((cmd + "\n").encode("ascii"))
 
         except Exception as e:
-            raise XPlaneConnectionError(f"Falha ao enviar comandos: {e}")
+            raise XplaneConnectionError(f"Falha ao enviar comandos: {e}")

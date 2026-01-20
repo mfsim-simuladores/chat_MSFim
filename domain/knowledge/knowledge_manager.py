@@ -19,7 +19,8 @@ class KnowledgeManager:
                 self._items.append(
                     KnowledgeItem(
                         question=item["Question"].strip(),
-                        action=item["Action"].strip()
+                        action=item["Action"].strip(),
+                        response=item.get("Response")
                     )
                 )
 
@@ -49,10 +50,15 @@ class KnowledgeManager:
             }
             data.append(categoria)
 
-        categoria["Items"].append({
+        item = {
             "Question": question.strip(),
             "Action": action
-        })
+        }
+
+        if response:
+            item["Response"] = response.strip()
+
+        categoria["Items"].append(item)
 
         self.repo.save(data)
 

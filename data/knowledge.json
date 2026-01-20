@@ -61,7 +61,8 @@
         "Items": [
             {
                 "Question": "Qual o melhor modelo de aviao para poder aprender a voar?",
-                "Action": "start_sim"
+                "Action": "responder_texto",
+                "Response": "O Cessna 172 é amplamente utilizado no treinamento inicial por sua estabilidade, simplicidade de operação e excelente margem de segurança."
             }
         ]
     }

@@ -8,6 +8,10 @@ from domain.xplane.services.tcp_client import XPlaneTCPClient
 from domain.logging.sse_events import SSEEvent
 from domain.actions.registry import ACTIONS_REGISTRY
 from domain.state.conversation_state import conversation_state
+from domain.xplane.exceptions import (
+    XplaneConnectionError,
+    XplaneEmptyResponse
+)
 
 class ActionExecutor:
 
@@ -18,7 +22,7 @@ class ActionExecutor:
     def set_feedback(self, cb):
         self.feedback = cb
 
-    def execute(self, action_name: str):
+    def execute(self, action_name: str, payload=None):
         print(f"🔥 Executor recebeu ação: {action_name}")
 
         action = ACTIONS_REGISTRY.get(action_name)
@@ -33,7 +37,15 @@ class ActionExecutor:
             return
 
         try:
-            action.execute(self)
+            result = action.execute(self, payload)
+
+            if isinstance(result, str) and result.strip():
+                self.feedback(
+                    SSEEvent.log(
+                        result,
+                        title="Assistente"
+                    )
+                )
 
         except Exception as e:
             self.feedback(
@@ -42,6 +54,8 @@ class ActionExecutor:
                     message=str(e)
                 )
             )
+
+
 
     def log_info(self, title, message, action=None):
         self.feedback(SSEEvent.action(title, message, action))
@@ -249,6 +263,7 @@ class ActionExecutor:
                 )
             )
             return
+
 
         if not status:
             self.feedback(

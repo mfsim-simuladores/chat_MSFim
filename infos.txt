@@ -1,2 +1,4 @@
 1. Para a criação de uma nova instalção crie um wizard (na pasta domain/wizard),
 implemente as ações no executor e regitre no WizardStep.
+
+http://127.0.0.1:8000/admin/learning

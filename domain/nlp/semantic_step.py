@@ -19,4 +19,11 @@ class SemanticStep(PipelineStep):
         if not isinstance(action, str):
             return StepResult(False)
 
-        return StepResult(True, action)
+        return StepResult(
+                True,
+                {
+                    "action": action,
+                    "payload": getattr(item, "response", None)
+                }
+            )
+

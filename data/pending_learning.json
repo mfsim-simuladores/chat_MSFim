@@ -8,5 +8,25 @@
     "fonte": "manual",
     "autor": "assistente",
     "status": "aprovado"
+  },
+  {
+    "id": "4fb2ff67-8643-4750-a1e9-586989b9efd9",
+    "data": "2026-01-19T13:38:58.556566",
+    "instrucao": "qual simulador mais ideal para aviacao?",
+    "acao": null,
+    "resposta": null,
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "pendente"
+  },
+  {
+    "id": "1bee8369-4ed2-43bb-870b-4f94d2f82421",
+    "data": "2026-01-20T11:25:14.690482",
+    "instrucao": "obrigada",
+    "acao": null,
+    "resposta": null,
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "pendente"
   }
 ]

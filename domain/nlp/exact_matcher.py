@@ -11,4 +11,18 @@ class ExactMatcher(PipelineStep):
         if not item:
             return StepResult(False)
 
-        return StepResult(True, item.action)
+        if item.action == "responder_texto":
+            return StepResult(
+                resolved=True,
+                output=item.response
+            )
+
+        return StepResult(
+            resolved=True,
+            output={
+                "action": item.action,
+                "payload": item.response
+            }
+        )
+
+

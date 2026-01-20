@@ -10,6 +10,7 @@ class ConversationState:
         self.wizard_steps: List[Dict] = []
         self.wizard_index: int = 0
 
+        self.pending_action: Optional[str] = None
         self._awaiting_confirmation = False
         self._awaiting_ok = False
         self.just_started = False 
@@ -34,6 +35,19 @@ class ConversationState:
             return None
 
         return self.wizard_steps[self.wizard_index]
+
+    def start_confirmation(self, action_name: str):
+        self.pending_action = action_name
+        self._awaiting_confirmation = True
+        self._awaiting_ok = False
+
+    def consume_confirmation(self):
+        action = self.pending_action
+        self.pending_action = None
+        self._awaiting_confirmation = False
+        return action
+
+
 
     def advance_step(self):
         self.wizard_index += 1

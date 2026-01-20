@@ -9,6 +9,10 @@ class LearningFallbackStep(PipelineStep):
         self.learning.registrar_instrucao(text)
         return StepResult(
             True,
-            "🤖 No momento não consigo responder, mas em breve estarei aprendendo mais!"
+            {
+                "action": "responder_texto",
+                "payload": "🤖 No momento não consigo responder, mas em breve estarei aprendendo mais!"
+            }
         )
+
         

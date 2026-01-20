@@ -21,6 +21,13 @@ class FuzzyMatcher(PipelineStep):
                 best_score = score
 
         if best_item and best_score >= self.threshold:
-            return StepResult(True, best_item.action)
+            return StepResult(
+                True,
+                {
+                    "action": best_item.action,
+                    "payload": best_item.response
+                }
+            )
+
 
         return StepResult(False)
