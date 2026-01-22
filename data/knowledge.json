@@ -68,6 +68,11 @@
                 "Question": "obrigada",
                 "Action": "responder_texto",
                 "Response": "Nós que agradecemos comando!"
+            },
+            {
+                "Question": "qual simulador mais ideal para aviacao?",
+                "Action": "responder_texto",
+                "Response": "Profissionalmente seria FFS/FTD, para estudo Xplane, para imersão visual MSFS."
             }
         ]
     }
