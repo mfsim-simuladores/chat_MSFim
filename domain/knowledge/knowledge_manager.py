@@ -37,7 +37,7 @@ class KnowledgeManager:
                 return item
         return None
 
-    def add_item(self, question: str, action: str, reponse: str =None):
+    def add_item(self, question: str, action: str, response: str | None = None):
         data = self.repo.load_all()
 
         categoria = next((c for c in data if c["Category"] == "Aprendizado"), None)
@@ -45,21 +45,21 @@ class KnowledgeManager:
         if not categoria:
             categoria = {
                 "Category": "Aprendizado",
-                "Description": "Conhevimento aprendido incrementalmente",
+                "Description": "Conhecimento aprendido incrementalmente",
                 "Items": []
             }
             data.append(categoria)
 
         item = {
             "Question": question.strip(),
-            "Action": action
+            "Action": action.strip()
         }
 
-        if response:
+        if response and response.strip():
             item["Response"] = response.strip()
 
         categoria["Items"].append(item)
-
         self.repo.save(data)
 
+        # força reload em memória
         self._items = None

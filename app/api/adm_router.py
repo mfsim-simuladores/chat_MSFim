@@ -12,16 +12,30 @@ def painel_learning(request: Request):
     for p in pendentes:
         html += f"""
         <li>
-            <b>{p['instrucao']}</b><br/>
+            <b>{p['instrucao']}</b><br/><br/>
+
             <form action="/learning/approve/{p['id']}" method="post">
-                <input type="text" name="action"
-                        placeholder="ação (ex: responder_modelo)"
-                        required />
+                
+                <label><b>Ação</b></label><br/>
+                <input type="text"
+                       name="action"
+                       placeholder="ex: start_sim ou responder_texto"
+                       required
+                       style="width: 400px;" />
+                <br/><br/>
+
+                <label><b>Resposta (opcional)</b></label><br/>
+                <textarea name="response"
+                          placeholder="Preencha apenas se a ação for responder_texto"
+                          rows="4"
+                          style="width: 400px;"></textarea>
+                <br/><br/>
 
                 <button type="submit">Aprovar</button>
             </form>
-        </li><hr/>
+        </li>
+        <hr/>
         """
 
-    html += "</ul"
+    html += "</ul>"
     return html

@@ -40,16 +40,24 @@ class LearningService:
         todas = self.repository.listar_todas()
         return [i for i in todas if i.get("status") == "pendente"]
 
-    def aprovar_instrucao(self, instrucao_id, knowledge_manager, action_override=None):
+    def aprovar_instrucao(
+        self,
+        instrucao_id,
+        knowledge_manager,
+        action_override=None,
+        response_override=None
+    ):
         itens = self.repository.listar_todas()
-
         aprovado = None
 
         for item in itens:
             if item.get("id") == instrucao_id:
                 item["status"] = "aprovado"
-                if action_override:
-                    item["acao"] = action_override
+                item["acao"] = action_override
+
+                if response_override:
+                    item["resposta"] = response_override
+
                 aprovado = item
                 break
 
@@ -57,16 +65,17 @@ class LearningService:
             return False
 
         if not aprovado.get("acao"):
-            raise ValueError("Não é possivel aprovar sem ação definida")
+            raise ValueError("Não é possível aprovar sem ação definida")
 
         knowledge_manager.add_item(
             question=aprovado["instrucao"],
-            action=aprovado.get("acao")
+            action=aprovado["acao"],
+            response=aprovado.get("resposta")
         )
 
         self.repository.atualizar(
             instrucao_id,
-            {"status": "aprovado", "acao": aprovado["acao"]}
+            aprovado
         )
 
         return True

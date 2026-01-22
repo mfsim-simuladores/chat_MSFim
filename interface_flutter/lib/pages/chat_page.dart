@@ -134,6 +134,64 @@ class _ChatPageState extends State<ChatPage> {
     return cdir;
   }
 
+  void _atualizarTituloSeNecessario(String textoUsuario) {
+    if (_conversaAtualId == null) return;
+
+    final idx = _conversas.indexWhere(
+      (c) => c["id"] == _conversaAtualId,
+    );
+
+    if (idx == -1) return;
+
+    if (_conversas[idx]["titulo"] == "Nova conversa") {
+      _conversas[idx]["titulo"] =
+          textoUsuario.length > 32
+              ? "${textoUsuario.substring(0, 32)}..."
+              : textoUsuario;
+
+      _salvarConversas();
+      setState(() {});
+    }
+  }
+
+  void _renomearConversa(Map<String, dynamic> c) {
+    final controller = TextEditingController(text: c["titulo"]);
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        backgroundColor: const Color(0xFF0D1B2A),
+        title: const Text("Renomear conversa",
+            style: TextStyle(color: Colors.white)),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          style: const TextStyle(color: Colors.white),
+          decoration: const InputDecoration(
+            hintText: "Novo nome",
+            hintStyle: TextStyle(color: Colors.white54),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancelar"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              c["titulo"] = controller.text.trim();
+              _salvarConversas();
+              setState(() {});
+              Navigator.pop(context);
+            },
+            child: const Text("Salvar"),
+          ),
+        ],
+      ),
+    );
+  }
+
+
   Future<void> _carregarConversas() async {
     final prefs = await SharedPreferences.getInstance();
     final raw = prefs.getString("conversas");
@@ -260,9 +318,9 @@ class _ChatPageState extends State<ChatPage> {
     SharedPreferences.getInstance().then((p) => p.remove("conversas"));
   }
 
-
   Future<void> _sendMessage(String txt) async {
     if (txt.trim().isEmpty) return;
+    _atualizarTituloSeNecessario(txt);
 
     setState(() {
       _messages.add(Message.user(txt));
@@ -553,8 +611,24 @@ class _ChatPageState extends State<ChatPage> {
       child: Column(
         children: [
           Image(image: AssetImage("assets/robot_mfsim.png"), height: 110),
-          const DrawerHeader(
-            child: Text("Conversas", style: TextStyle(color: Colors.white)),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Conversas",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+          const Divider(
+            color: Colors.white24,
+            height: 1,
+            thickness: 1,
           ),
           ListTile(
             leading: const Icon(Icons.add, color: Colors.white),
@@ -583,7 +657,10 @@ class _ChatPageState extends State<ChatPage> {
                 final c = _conversas[i];
                 return ListTile(
                   leading: const Icon(Icons.chat_outlined, color: Colors.white70),
-                  title: Text(c["titulo"], style: const TextStyle(color: Colors.white)),
+                  title: Text(
+                    c["titulo"],
+                    style: const TextStyle(color: Colors.white),
+                  ),
                   subtitle: Text(
                     c["data"].toString().substring(0, 10),
                     style: const TextStyle(color: Colors.white54),
@@ -596,6 +673,7 @@ class _ChatPageState extends State<ChatPage> {
                     Navigator.pop(context);
                     _abrirConversa(c);
                   },
+                  onLongPress: () => _renomearConversa(c), 
                 );
               },
             ),

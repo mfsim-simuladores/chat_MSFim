@@ -9,21 +9,26 @@ def listar(request: Request):
     return request.app.state.learning_repo.list_pending()
 
 @router.post("/approve/{instrucao_id}")
-def aprovar(request: Request, instrucao_id: str, action: str = Form(...)):
-
+def aprovar(
+    request: Request,
+    instrucao_id: str,
+    action: str = Form(...),
+    response: str = Form(None)
+):
     learning_service = request.app.state.learning_service
     knowledge_manager = request.app.state.knowledge_manager
 
     ok = learning_service.aprovar_instrucao(
         instrucao_id=instrucao_id,
         knowledge_manager=knowledge_manager,
-        action_override=action
+        action_override=action,
+        response_override=response
     )
 
     if not ok:
         return {"status": "erro", "message": "Instrução não encontrada"}
 
-    return{
+    return {
         "status": "ok",
         "message": "Instrução aprovada e incorporada ao conhecimento"
     }

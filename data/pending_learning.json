@@ -23,6 +23,46 @@
     "id": "1bee8369-4ed2-43bb-870b-4f94d2f82421",
     "data": "2026-01-20T11:25:14.690482",
     "instrucao": "obrigada",
+    "acao": "responder_texto",
+    "resposta": "Nós que agradecemos comando!",
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "aprovado"
+  },
+  {
+    "id": "607b8b79-9feb-46a9-bb0b-e8531ebe6c53",
+    "data": "2026-01-22T09:52:04.449699",
+    "instrucao": "iniciar instalação gfc700",
+    "acao": null,
+    "resposta": null,
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "pendente"
+  },
+  {
+    "id": "9c2399fd-0d3e-4fcf-94d8-b44cc48e1ed2",
+    "data": "2026-01-22T09:52:08.071680",
+    "instrucao": "sim",
+    "acao": null,
+    "resposta": null,
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "pendente"
+  },
+  {
+    "id": "bd4c6048-c11e-4a3d-b18c-f73e81ce668e",
+    "data": "2026-01-22T09:52:18.775969",
+    "instrucao": "ok",
+    "acao": null,
+    "resposta": null,
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "pendente"
+  },
+  {
+    "id": "29a7f2ea-6d9a-4f3c-a99a-cbff36bb203f",
+    "data": "2026-01-22T11:39:58.991472",
+    "instrucao": "diagnosticar motor",
     "acao": null,
     "resposta": null,
     "fonte": "manual",
