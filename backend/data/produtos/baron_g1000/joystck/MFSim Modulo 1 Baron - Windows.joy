@@ -1,0 +1,83 @@
+I
+1100 Version
+JOY
+
+
+OS: Windows
+Name: MFSim Modulo 1 Baron
+
+
+ID: VID:0x7054PID:0x7066
+View: Padrão
+-----------------------------------------------------------------------
+Image: MFSim Modulo 1.png
+Assignments:
+
+--------------------------------------------------------------
+Axis 0: joy_use_ptch reverse
+Axis 1: joy_use_roll reverse
+
+Button 0: sim/lights/nav_lights_on
+Button 1: sim/lights/beacon_lights_on
+Button 2: sim/lights/generic_01_light_tog
+Button 3: sim/lights/landing_lights_on
+Button 4: laminar/b58/lighting/flood_light_switch
+Button 6: sim/lights/generic_01_light_tog
+Button 7: sim/lights/taxi_lights_on
+Button 8: MFSim/Flaps_2
+Button 9: sim/flight_controls/brakes_max
+Button 10: sim/flight_controls/landing_gear_up
+Button 12: sim/fuel/fuel_pump_1_on
+Button 14: sim/fuel/fuel_pump_2_on
+Button 16: sim/electrical/battery_1_on
+Button 17: sim/ice/AOA_heat0_on
+Button 18: sim/ice/window_heat_on
+Button 19: sim/electrical/generator_1_on
+Button 20: laminar/b58/surface_ice_switch_up
+Button 21: sim/systems/prop_sync_on
+Button 22: sim/electrical/generator_2_on
+Button 23: sim/systems/avionics_on
+Button 24: sim/magnetos/magnetos_both_1
+Button 25: sim/magnetos/magnetos_left_1
+Button 26: sim/magnetos/magnetos_right_1
+Button 27: sim/magnetos/magnetos_off_1
+Button 28: sim/ice/prop_heat_on
+Button 29: sim/ice/pitot_heat1_on
+Button 30: sim/ice/pitot_heat0_on
+Button 31: sim/starters/engage_starter_1
+Button 34: sim/annunciator/test_all_annunciators
+Button 35: sim/starters/engage_starter_2
+Button 36: sim/magnetos/magnetos_off_2
+Button 37: sim/magnetos/magnetos_right_2
+Button 38: sim/magnetos/magnetos_left_2
+Button 39: sim/magnetos/magnetos_both_2
+Button 40: sim/lights/nav_lights_off
+Button 41: sim/lights/beacon_lights_off
+Button 43: sim/lights/landing_lights_off
+Button 44: laminar/b58/lighting/flood_light_switch
+Button 46: sim/lights/generic_01_light_tog
+Button 47: sim/lights/taxi_lights_off
+Button 48: MFSim/Flaps_1
+Button 50: sim/flight_controls/landing_gear_down
+Button 52: sim/fuel/fuel_pump_1_off
+Button 54: sim/fuel/fuel_pump_2_off
+Button 56: sim/electrical/battery_1_off
+Button 57: sim/ice/AOA_heat0_off
+Button 58: sim/ice/window_heat_off
+Button 59: sim/electrical/generator_1_off
+Button 60: laminar/b58/surface_ice_switch_dn
+Button 61: sim/systems/prop_sync_off
+Button 62: sim/electrical/generator_2_off
+Button 63: sim/systems/avionics_off
+Button 68: sim/ice/prop_heat_off
+Button 69: sim/ice/pitot_heat1_off
+Button 70: sim/ice/pitot_heat0_off
+Button 80: MFSim/Flaps_1
+Button 81: MFSim/Flaps_0
+Button 82: sim/flight_controls/aileron_trim_right
+Button 83: sim/flight_controls/pitch_trim_up
+Button 84: sim/flight_controls/pitch_trim_down
+Button 85: sim/flight_controls/aileron_trim_left
+
+
+

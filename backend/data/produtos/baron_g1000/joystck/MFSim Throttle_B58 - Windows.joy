@@ -1,0 +1,38 @@
+I
+1100 Version
+JOY
+
+OS: Windows
+
+Name: MFSim Baron Throttle
+
+
+ID: VID:0x2441PID:0x8136
+View: Padrão
+
+Image: MFSim Modulo 1.png
+Assignments:
+--------------------------------------------------------------
+Axis 0: joy_use_thro1 reverse
+Axis 1: joy_use_prop2
+Axis 2: joy_use_thro2 reverse
+Axis 3: joy_use_mixt1
+Axis 4: joy_use_prop1
+Axis 5: joy_use_mixt2
+
+Button 0: sim/fuel/left_fuel_selector_rgt
+Button 1: sim/fuel/left_fuel_selector_lft
+Button 2: sim/fuel/left_fuel_selector_none
+Button 3: sim/fuel/right_fuel_selector_none
+Button 4: sim/fuel/right_fuel_selector_rgt
+Button 5: sim/fuel/right_fuel_selector_lft
+Button 6: sim/flight_controls/cowl_flaps_open_1
+Button 7: sim/flight_controls/cowl_flaps_open_2
+Button 8: sim/flight_controls/cowl_flaps_closed_1
+Button 9: sim/flight_controls/cowl_flaps_closed_2
+Button 11: sim/flight_controls/pitch_trim_down
+Button 12: sim/flight_controls/pitch_trim_up
+Button 13: sim/flight_controls/rudder_trim_left
+Button 14: sim/flight_controls/rudder_trim_right
+Button 15: sim/flight_controls/aileron_trim_left
+Button 16: sim/flight_controls/aileron_trim_right

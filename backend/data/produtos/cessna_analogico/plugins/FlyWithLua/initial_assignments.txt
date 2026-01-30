@@ -1,0 +1,42 @@
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- --  FlyWithLua: SaveInitialAssignments.ini version 2.8.11 build 2023-10-19  -- --
+-- --  The initial assignments are stored in this file. -- --- -- -- -- -- -- -- --
+-- -- 8<  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+clear_all_axis_assignments()
+set_axis_assignment( 0, "Pitch", "normal" )
+set_axis_assignment( 1, "Roll", "normal" )
+set_axis_assignment( 3, "Yaw", "normal" )
+
+clear_all_button_assignments()
+set_button_assignment( (0*160) + 0, "sim/flight_controls/flaps_down" )
+set_button_assignment( (0*160) + 1, "sim/engines/throttle_down" )
+set_button_assignment( (0*160) + 2, "sim/engines/throttle_up" )
+set_button_assignment( (0*160) + 3, "sim/flight_controls/flaps_up" )
+set_button_assignment( (0*160) + 4, "sim/general/zoom_out" )
+set_button_assignment( (0*160) + 5, "sim/general/zoom_in" )
+set_button_assignment( (0*160) + 7, "sim/operation/pause_toggle" )
+set_button_assignment( (0*160) + 8, "sim/flight_controls/brakes_toggle_regular" )
+set_button_assignment( (0*160) + 9, "sim/autopilot/servos_off_any" )
+set_button_assignment( (0*160) + 10, "sim/general/hat_switch_up" )
+set_button_assignment( (0*160) + 11, "sim/general/hat_switch_up_right" )
+set_button_assignment( (0*160) + 12, "sim/general/hat_switch_right" )
+set_button_assignment( (0*160) + 13, "sim/general/hat_switch_down_right" )
+set_button_assignment( (0*160) + 14, "sim/general/hat_switch_down" )
+set_button_assignment( (0*160) + 15, "sim/general/hat_switch_down_left" )
+set_button_assignment( (0*160) + 16, "sim/general/hat_switch_left" )
+set_button_assignment( (0*160) + 17, "sim/general/hat_switch_up_left" )
+
+-- setting nullzone, sensitivity and augment
+set( "sim/joystick/joystick_pitch_nullzone",      0.000 )
+set( "sim/joystick/joystick_roll_nullzone",       0.000 )
+set( "sim/joystick/joystick_heading_nullzone",    0.000 )
+set( "sim/joystick/joystick_pitch_sensitivity",   0.000 )
+set( "sim/joystick/joystick_roll_sensitivity",    0.000 )
+set( "sim/joystick/joystick_heading_sensitivity", 0.000 )
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- >8 -- --
+
+-- PLANE_ICAO == "C172"
+-- PLANE_TAILNUMBER == "N172SP"
+-- AIRCRAFT_FILENAME == "Cessna_172SP_G1000.acf"

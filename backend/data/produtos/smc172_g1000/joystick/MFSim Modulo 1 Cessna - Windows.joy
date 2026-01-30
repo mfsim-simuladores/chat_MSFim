@@ -1,0 +1,57 @@
+I
+1100 Version
+JOY
+
+OS: Windows
+Name: MFSim Modulo 1
+
+ID: VID:0x7021PID:0x7020
+View: Padrão
+
+Image: MFSim Modulo 1.png
+Assignments:
+--------------------------------------------------------------
+Axis 0: joy_use_mixt reverse
+Axis 1: joy_use_prop
+Axis 2: joy_use_thro
+Axis 3: joy_use_none
+Axis 4: joy_use_ptch reverse
+Axis 5: joy_use_roll reverse
+
+Button 0: sim/magnetos/magnetos_off_1
+Button 1: sim/magnetos/magnetos_right_1
+Button 2: sim/magnetos/magnetos_left_1
+Button 3: sim/magnetos/magnetos_both_1
+Button 4: sim/starters/engage_starter_1
+Button 5: sim/electrical/battery_1_off
+Button 6: sim/electrical/battery_1_on
+Button 7: sim/systems/avionics_off
+Button 8: sim/systems/avionics_on
+Button 12: sim/electrical/generator_1_off
+Button 13: sim/electrical/generator_1_on
+Button 20: ssim/cockpit2/controls/altair0
+Button 21: ssim/cockpit2/controls/altair1
+Button 22: sim/flight_controls/park_brake_set
+Button 23: sim/flight_controls/park_brake_release
+Button 24: sim/flight_controls/flaps_down
+Button 26: sim/flight_controls/flaps_up
+Button 28: sim/view/quick_look_0
+Button 29: sim/view/quick_look_0
+Button 34: sim/lights/beacon_lights_on
+Button 35: sim/lights/beacon_lights_off
+Button 36: sim/lights/landing_lights_on
+Button 37: sim/lights/landing_lights_off
+Button 38: sim/fuel/fuel_pump_1_on
+Button 39: sim/fuel/fuel_pump_1_off
+Button 40: sim/ice/pitot_heat0_on
+Button 41: sim/ice/pitot_heat0_off
+Button 42: sim/lights/taxi_lights_on
+Button 43: sim/lights/taxi_lights_off
+Button 44: sim/lights/nav_lights_on
+Button 45: sim/lights/nav_lights_off
+Button 46: sim/lights/strobe_lights_on
+Button 47: sim/lights/strobe_lights_off
+Button 48: sim/flight_controls/aileron_trim_right
+Button 49: sim/flight_controls/pitch_trim_up
+Button 50: sim/flight_controls/pitch_trim_down
+Button 51: sim/flight_controls/aileron_trim_left

@@ -1,0 +1,19 @@
+I
+1100 Version
+JOY
+
+
+OS: Windows
+
+Name: MFSim Rudder Pedal
+
+ID: VID:0x7211PID:0x7210
+
+View: Padrão
+
+Image: MFSim Modulo 1.png
+Assignments:
+--------------------------------------------------------------
+Axis 0: joy_use_rbrk reverse
+Axis 1: joy_use_lbrk reverse
+Axis 2: joy_use_hdng reverse

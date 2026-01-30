@@ -1,0 +1,21 @@
+I
+1100 Version
+JOY
+
+
+OS: Windows
+
+Name: MFSim Trim C172 Module
+
+ID: VID:0x2642PID:0x8062
+
+View: Padrão
+
+Image: MFSim Modulo 1.png
+Assignments:
+--------------------------------------------------------------
+Button 2: sim/fuel/fuel_selector_rgt
+Button 3: sim/fuel/fuel_selector_ctr
+Button 4: sim/fuel/fuel_selector_lft
+Button 6: sim/flight_controls/pitch_trim_up
+Button 7: sim/flight_controls/pitch_trim_down

@@ -1,0 +1,84 @@
+[
+    {
+        "Category": "X-Plane",
+        "Description": "Comandos relacionados ao simulador X-Plane.",
+        "Items": [
+            {
+                "Question": "abrir xplane",
+                "Action": "start_sim"
+            },
+            {
+                "Question": "xplane instalado",
+                "Action": "verificar_insxplane"
+            }
+        ]
+    },
+    {
+        "Category": "Plugins",
+        "Description": "Gerenciamento de plugins MFSim no X-Plane.",
+        "Items": [
+            {
+                "Question": "verificar plugin",
+                "Action": "verinsta_pluginxplane"
+            },
+            {
+                "Question": "baixar plugin",
+                "Action": "verinsta_pluginxplane"
+            }
+        ]
+    },
+    {
+        "Category": "Diagnóstico",
+        "Description": "Verifica e corrige falhas em instrumentos ou sistemas.",
+        "Items": [
+            {
+                "Question": "a tela da bússola está preta",
+                "Action": "diagnosticar_bussola"
+            },
+            {
+                "Question": "O motor nao esta funcionando",
+                "Action": "diagnosticar_motor"
+            },
+            {
+                "Question": "corrigir para voo",
+                "Action": "corrigir_prevoo"
+            }
+        ]
+    },
+    {
+        "Category": "Voo",
+        "Description": "Checklist e preparação de voo.",
+        "Items": [
+            {
+                "Question": "preparado para voar",
+                "Action": "preparar_voo"
+            }
+        ]
+    },
+    {
+        "Category": "Aprendizado",
+        "Description": "Conhevimento aprendido incrementalmente",
+        "Items": [
+            {
+                "Question": "Qual o melhor modelo de aviao para poder aprender a voar?",
+                "Action": "responder_texto",
+                "Response": "O Cessna 172 é amplamente utilizado no treinamento inicial por sua estabilidade, simplicidade de operação e excelente margem de segurança."
+            },
+            {
+                "Question": "obrigada",
+                "Action": "responder_texto",
+                "Response": "Nós que agradecemos comando!"
+            },
+            {
+                "Question": "qual simulador mais ideal para aviacao?",
+                "Action": "responder_texto",
+                "Response": "Profissionalmente seria FFS/FTD, para estudo Xplane, para imersão visual MSFS."
+            },
+            {
+                "Question": "Como mudar a localização do voo no xplane",
+                "Action": "responder_texto",
+                "Response": "Para configurar a localização do voo, clique no ícone de avião no canto direito da tela. Em seguida, selecione \"Mudar Localização\" para iniciar as alterações. Pesquise o aeroporto desejado e selecione-o na lista. Por fim, clique em \"Começar Novo Voo\" para aplicar a nova localização."
+            }
+        ]
+    }
+]
