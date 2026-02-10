@@ -1,8 +1,28 @@
 [
   {
-    "id": "e856cec3-7d08-4c51-b14e-d066632ef238",
-    "data": "2026-01-29T11:10:04.079685",
-    "instrucao": "instalação g1000",
+    "id": "5a101ad6-585c-4df2-b209-15a5e1d9e5d5",
+    "data": "2026-02-09T08:46:17.998283",
+    "instrucao": "como mover a seta do mouse, para poder arrumar a posicao dos instrumentos, esta errada",
+    "acao": "responder_texto",
+    "resposta": "Para saber onde mexer a seta, vá nas configurações -> sistema -> Tela -> Identificar, identifique e localize a posição de cada tela (se estiver na direita basta passar o mouse para direita e vice versa)",
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "aprovado"
+  },
+  {
+    "id": "78fe39bd-10c9-45c3-8801-64396dc12858",
+    "data": "2026-02-09T11:10:07.288306",
+    "instrucao": "POST /knowledge/reload",
+    "acao": "responder_texto",
+    "resposta": "Apenas feche e abra novamente",
+    "fonte": "manual",
+    "autor": "assistente",
+    "status": "aprovado"
+  },
+  {
+    "id": "78fe39bd-10c9-45c3-8801-64396dc12858",
+    "data": "2026-02-09T11:10:07.288306",
+    "instrucao": "Como arruma a tela do xplane",
     "acao": null,
     "resposta": null,
     "fonte": "manual",
@@ -10,48 +30,8 @@
     "status": "pendente"
   },
   {
-    "id": "9b1886d2-5dbc-4c2d-99ab-ddf3d4d05868",
-    "data": "2026-01-29T11:10:06.400256",
-    "instrucao": "sim",
-    "acao": null,
-    "resposta": null,
-    "fonte": "manual",
-    "autor": "assistente",
-    "status": "pendente"
-  },
-  {
-    "id": "9d3eb8f7-4a40-4879-a2ee-42546d99d941",
-    "data": "2026-01-29T11:10:23.389069",
-    "instrucao": "ok",
-    "acao": null,
-    "resposta": null,
-    "fonte": "manual",
-    "autor": "assistente",
-    "status": "pendente"
-  },
-  {
-    "id": "624e0176-fabb-49e1-9d49-6dc8fcccfdd6",
-    "data": "2026-01-29T11:40:15.471351",
-    "instrucao": "configurar manche",
-    "acao": null,
-    "resposta": null,
-    "fonte": "manual",
-    "autor": "assistente",
-    "status": "pendente"
-  },
-  {
-    "id": "ccd7e0bc-f15b-4058-853c-a2d2780a706f",
-    "data": "2026-01-29T12:02:09.524604",
-    "instrucao": "confugurar manche",
-    "acao": null,
-    "resposta": null,
-    "fonte": "manual",
-    "autor": "assistente",
-    "status": "pendente"
-  },
-  {
-    "id": "73d91a80-d84d-43ac-bc52-3ca56c78412c",
-    "data": "2026-01-29T12:50:58.321033",
+    "id": "21d993c9-b231-402f-838e-62f89754ac9c",
+    "data": "2026-02-10T10:41:06.187105",
     "instrucao": "configurar eixos",
     "acao": null,
     "resposta": null,
@@ -60,18 +40,8 @@
     "status": "pendente"
   },
   {
-    "id": "fe586053-5f22-44a5-9ed5-02171accf0bf",
-    "data": "2026-01-30T08:53:46.657971",
-    "instrucao": "voltar",
-    "acao": null,
-    "resposta": null,
-    "fonte": "manual",
-    "autor": "assistente",
-    "status": "pendente"
-  },
-  {
-    "id": "12ed2300-3605-4eb3-978c-e3805e9e261c",
-    "data": "2026-01-30T08:54:32.813228",
+    "id": "70da0ed2-294f-4efa-8ffa-0b029172df94",
+    "data": "2026-02-10T10:41:17.110338",
     "instrucao": "cancelar",
     "acao": null,
     "resposta": null,
@@ -80,39 +50,9 @@
     "status": "pendente"
   },
   {
-    "id": "8a2be8f7-6dcb-47a1-9e81-afeee51af261",
-    "data": "2026-01-30T09:02:55.404573",
-    "instrucao": "configura manche",
-    "acao": null,
-    "resposta": null,
-    "fonte": "manual",
-    "autor": "assistente",
-    "status": "pendente"
-  },
-  {
-    "id": "12d24d08-7b2a-421f-bdd9-48be9e8b20de",
-    "data": "2026-01-30T09:32:46.229419",
-    "instrucao": "quais os jogos que simulam um voo",
-    "acao": null,
-    "resposta": null,
-    "fonte": "manual",
-    "autor": "assistente",
-    "status": "pendente"
-  },
-  {
-    "id": "0fce3872-142a-47eb-8d9c-a170611cb9ec",
-    "data": "2026-01-30T10:39:30.768620",
-    "instrucao": "carregar manche",
-    "acao": null,
-    "resposta": null,
-    "fonte": "manual",
-    "autor": "assistente",
-    "status": "pendente"
-  },
-  {
-    "id": "2a811895-4759-4074-a909-d559b9d79a60",
-    "data": "2026-01-30T12:32:35.097817",
-    "instrucao": "proximo",
+    "id": "20435029-88bb-45d2-b28d-da2ddbcbb28e",
+    "data": "2026-02-10T10:47:14.126000",
+    "instrucao": "sim",
     "acao": null,
     "resposta": null,
     "fonte": "manual",

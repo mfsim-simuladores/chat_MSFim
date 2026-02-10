@@ -24,6 +24,9 @@ class KnowledgeManager:
                     )
                 )
 
+    def reload(self):
+        self._items = None
+
     def all_items(self):
         self._load()
         return self._items
@@ -59,7 +62,6 @@ class KnowledgeManager:
             item["Response"] = response.strip()
 
         categoria["Items"].append(item)
-        self.repo.save(data)
+        self.repo.save_all(data)
 
-        # força reload em memória
         self._items = None

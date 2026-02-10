@@ -23,7 +23,7 @@ class ActionExecutor:
         self.feedback = cb
 
     def execute(self, action_name: str, payload=None):
-        print(f"🔥 Executor recebeu ação: {action_name}")
+        #print(f"🔥 Executor recebeu ação: {action_name}")
 
         action = ACTIONS_REGISTRY.get(action_name)
 

@@ -14,11 +14,14 @@ from app.api.sse_handler import router as sse_router
 from app.api.adm_router import router as adm_router
 from app.api.files_router import router as files_router
 from app.api.media_router import router as media_router
+from pathlib import Path
 
 def configure_services(app: FastAPI):
+    BASE_DIR = Path(__file__).resolve().parent.parent
 
-    KNOWLEDGE_PATH = "data/knowledge/knowledge.json"
-    PENDING_PATH = "data/pending_learning.json"
+    KNOWLEDGE_PATH = BASE_DIR / "data" / "knowledge" / "knowledge.json"
+    PENDING_PATH   = BASE_DIR / "data" / "pending_learning.json"
+
 
     app.state.learning_repo = LearningRepository(PENDING_PATH)
     app.state.learning_service = LearningService(app.state.learning_repo)
@@ -27,6 +30,9 @@ def configure_services(app: FastAPI):
     app.state.knowledge_manager = KnowledgeManager(app.state.knowledge_repo)
 
     app.state.embedding_model = EmbeddingModel()
+    app.state.embedding_model.rebuild(
+        app.state.knowledge_manager.all_items()
+    )
     app.state.semantic_search = SemanticSearch(app.state.embedding_model)
 
 
@@ -41,8 +47,6 @@ def configure_services(app: FastAPI):
 
     print("🔥 MFSim Assistant carregado com sucesso.")
 
-
-
 def create_app() -> FastAPI:
     app = FastAPI(title="MFSim Assistant API")
     configure_services(app)
@@ -55,6 +59,5 @@ def create_app() -> FastAPI:
     app.include_router(media_router)
 
     return app
-
 
 app = create_app()

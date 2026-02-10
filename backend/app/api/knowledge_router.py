@@ -1,7 +1,10 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/knowledge",
+    tags=["knowledge"]
+)
 
 @router.get("/knowledge")
 def process_question(request: Request, q: str):
@@ -17,3 +20,21 @@ def process_question(request: Request, q: str):
     print("🔎 DEBUG ENVIANDO PARA FLUTTER:", {"action": action})
 
     return {"mensagem": f"Executando ação '{action}'...", "action": action}
+
+
+@router.post("/reload")
+def reload_knowledge(request: Request):
+
+    km = request.app.state.knowledge_manager
+    km.reload()
+
+    items = km.all_items()
+
+    embedding = request.app.state.embedding_model
+    embedding.rebuild(items)
+
+    return {
+        "status": "ok",
+        "message": "Knowledge e embeddings recarregados com sucesso"
+    }
+

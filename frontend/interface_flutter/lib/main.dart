@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'theme.dart';
 import 'package:media_kit/media_kit.dart';
 
-
 void main() {
   MediaKit.ensureInitialized();
   runApp(const MFSimApp());

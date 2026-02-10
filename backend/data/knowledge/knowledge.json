@@ -78,6 +78,16 @@
                 "Question": "Como mudar a localização do voo no xplane",
                 "Action": "responder_texto",
                 "Response": "Para configurar a localização do voo, clique no ícone de avião no canto direito da tela. Em seguida, selecione \"Mudar Localização\" para iniciar as alterações. Pesquise o aeroporto desejado e selecione-o na lista. Por fim, clique em \"Começar Novo Voo\" para aplicar a nova localização."
+            },
+            {
+                "Question": "como mover a seta do mouse, para poder arrumar a posicao dos instrumentos, esta errada",
+                "Action": "responder_texto",
+                "Response": "Para saber onde mexer a seta, vá nas configurações -> sistema -> Tela -> Identificar, identifique e localize a posição de cada tela (se estiver na direita basta passar o mouse para direita e vice versa)"
+            },
+            {
+                "Question": "POST /knowledge/reload",
+                "Action": "responder_texto",
+                "Response": "Apenas feche e abra novamente"
             }
         ]
     }

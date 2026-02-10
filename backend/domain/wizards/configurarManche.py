@@ -38,8 +38,8 @@ CONFIG_EIXOS = {
             ),
              "media": {
                 "type": "video",
-                "label": "Selecionando a aba Joystick",
-                "url": "/media/config_manche.mp4"          
+                "label": "Abrindo o painel de configuração",
+                "url": "/media/manche_p2.mp4"          
             },
             "type": "wait_ok"
         },
@@ -49,6 +49,11 @@ CONFIG_EIXOS = {
                 "3º Passo: Na parte superior da tela, selecione a aba *Joystick*.\n"
                 "Após concluir este passo, digite OK."
             ),
+                "media": {
+                    "type": "video",
+                    "label": "Abrindo aba Joystick",
+                    "url": "/media/manche_p3.mp4"          
+            },
             "type": "wait_ok"
         },
         {

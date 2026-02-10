@@ -50,22 +50,16 @@ class _ChatPageState extends State<ChatPage> {
 
     _cards = [
       _buildFeatureCard(
-        title: "Instalação GFC700",
+        title: "Configuração de eixos",
         description: "Guia interativo MFSim.",
         icon: Icons.memory_rounded,
-        message: "iniciar instalação gfc700",
+        message: "configurar eixos",
       ),
       _buildFeatureCard(
         title: "Abrir X-Plane",
         description: "Start automático + verificação.",
         icon: Icons.flight_takeoff_rounded,
         message: "abrir xplane",
-      ),
-      _buildFeatureCard(
-        title: "Instalação G1000",
-        description: "Guia interativo Mfsim.",
-        icon: Icons.extension_rounded,
-        message: "instalação g1000",
       ),
       _buildFeatureCard(
         title: "Diagnóstico Motor",
@@ -380,7 +374,15 @@ class _ChatPageState extends State<ChatPage> {
         }
 
         final String message =
-            (event["message"] ?? "").toString().trim();
+          (event["message"] ?? "").toString().trim();
+
+        final String title =
+            (event["title"] ?? "").toString().trim();
+
+        if (message.toLowerCase() == "concluído" ||
+            title.toLowerCase() == "concluído") {
+          continue;
+        }
 
         List<Attachment>? attachments;
         if (event["attachments"] != null &&
@@ -391,6 +393,7 @@ class _ChatPageState extends State<ChatPage> {
               .map((e) => Attachment.fromJson(e))
               .toList();
         }
+
 
         MediaAttachment? media;
         if (event["media"] != null && event["media"] is Map) {
@@ -411,8 +414,7 @@ class _ChatPageState extends State<ChatPage> {
           });
           continue;
         }
-        final String title =
-              (event["title"] ?? "").toString().trim();
+
           if (title.toLowerCase() == "interpretando" &&
               message.isEmpty &&
               attachments == null) {
@@ -428,7 +430,7 @@ class _ChatPageState extends State<ChatPage> {
                 Message.system(
                   message.isNotEmpty ? message : title,
                   attachments: attachments,
-                  media: media, // ← NOVO
+                  media: media,
                 ),
               );
             });
