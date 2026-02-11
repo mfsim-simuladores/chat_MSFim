@@ -15,6 +15,7 @@ from app.api.adm_router import router as adm_router
 from app.api.files_router import router as files_router
 from app.api.media_router import router as media_router
 from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
 
 def configure_services(app: FastAPI):
     BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +50,14 @@ def configure_services(app: FastAPI):
 
 def create_app() -> FastAPI:
     app = FastAPI(title="MFSim Assistant API")
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],  
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     configure_services(app)
     app.include_router(actions_router)
     app.include_router(knowledge_router)
