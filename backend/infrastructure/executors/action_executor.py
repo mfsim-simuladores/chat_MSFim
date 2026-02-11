@@ -3,7 +3,10 @@ import shutil
 import socket
 import subprocess
 import time
-import win32com.client as win32
+try:
+    import win32com.client as win32
+except ImportError:
+    win32 = None
 from domain.xplane.services.tcp_client import XPlaneTCPClient
 from domain.logging.sse_events import SSEEvent
 from domain.actions.registry import ACTIONS_REGISTRY
@@ -23,7 +26,6 @@ class ActionExecutor:
         self.feedback = cb
 
     def execute(self, action_name: str, payload=None):
-        #print(f"🔥 Executor recebeu ação: {action_name}")
 
         action = ACTIONS_REGISTRY.get(action_name)
 
