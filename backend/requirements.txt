@@ -7,3 +7,5 @@ pyserial
 sentence-transformers
 python-dotenv
 rapidfuzz
+sse-starlette
+openai
