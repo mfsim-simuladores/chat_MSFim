@@ -8,7 +8,7 @@ def _event(
         action=None,
         progress=None,
         attachments=None,
-        media=None,            # 🔑 NOVO
+        media=None,          
     ):
         payload = {
             "type": event_type,
@@ -22,7 +22,7 @@ def _event(
         if attachments:
             payload["attachments"] = attachments
 
-        if media:              # 🔑 NOVO
+        if media:             
             payload["media"] = media
 
         return payload
