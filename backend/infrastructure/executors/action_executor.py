@@ -15,6 +15,12 @@ from domain.xplane.exceptions import (
     XplaneConnectionError,
     XplaneEmptyResponse
 )
+import platform
+
+IS_WINDOWS = platform.system() == "Windows"
+IS_LINUX = platform.system() == "Linux"
+IS_MAC = platform.system() == "Darwin"
+
 
 class ActionExecutor:
 
@@ -79,23 +85,39 @@ class ActionExecutor:
         return payload
 
     def varredura_xplane(self):
-        self.log_info("Varredura", "Procurando X-Plane nos discos...", "varredura_xplane")
+        self.log_info("Varredura", "Procurando X-Plane...", "varredura_xplane")
 
-        for drive in ["C:\\", "D:\\"]:
-            for root, _, files in os.walk(drive):
-                if "X-Plane.exe" in files:
-                    caminho = os.path.join(root, "X-Plane.exe")
+        possible_paths = []
 
+        if IS_WINDOWS:
+            # procura nos discos
+            for drive in ["C:\\", "D:\\"]:
+                for root, _, files in os.walk(drive):
+                    if "X-Plane.exe" in files:
+                        return os.path.join(root, "X-Plane.exe")
+
+        elif IS_LINUX or IS_MAC:
+            home = os.path.expanduser("~")
+
+            possible_paths = [
+                os.path.join(home, "X-Plane 12", "X-Plane"),
+                os.path.join(home, "X-Plane 11", "X-Plane"),
+                os.path.join(home, "X-Plane 12", "X-Plane-x86_64"),
+                os.path.join(home, "X-Plane 11", "X-Plane-x86_64"),
+            ]
+
+            for path in possible_paths:
+                if os.path.exists(path):
                     self.log_success(
                         "X-Plane encontrado",
-                        f"Localizado em: {caminho}",
+                        f"Localizado em: {path}",
                         "varredura_xplane"
                     )
-                    return caminho
+                    return path
 
         self.log_error(
             "X-Plane não encontrado",
-            "Nenhuma instalação foi encontrada.",
+            "Nenhuma instalação encontrada.",
             "varredura_xplane"
         )
         return None
@@ -107,13 +129,23 @@ class ActionExecutor:
 
         try:
             self.log_info("Abrindo X-Plane", "Preparando execução...", "start_sim")
-            os.startfile(caminho)
+
+            if IS_WINDOWS:
+                os.startfile(caminho)
+            else:
+                subprocess.Popen([caminho])
+
             time.sleep(2)
 
-            self.log_success("X-Plane iniciado", "O simulador foi iniciado com sucesso.", "start_sim")
+            self.log_success(
+                "X-Plane iniciado",
+                "Simulador iniciado com sucesso.",
+                "start_sim"
+            )
 
         except Exception as e:
             self.log_error("Falha ao iniciar X-Plane", str(e), "start_sim")
+
 
     def verificar_instalacao_xplane(self):
         caminho = self.varredura_xplane()
