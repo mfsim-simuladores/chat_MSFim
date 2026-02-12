@@ -79,7 +79,9 @@ async def event_generator(text, pipeline, executor):
         ev = await queue.get()
         if ev == END:
             break
-        yield f"data: {json.dumps(ev, ensure_ascii=False)}\n\n"
+
+        yield json.dumps(ev, ensure_ascii=False)
+
 
 
 
